@@ -1,0 +1,27 @@
+/* ------------------------------------------------------------ *\
+	Btn
+\* ------------------------------------------------------------ */
+
+.btn {
+	text-align: center;
+	min-height: 45px;
+	border: 0;
+	max-width: 240px;
+	padding: 20px 31px;
+	border-radius: 10px;
+	font-size: 20px;
+	letter-spacing: 0.1em;
+	background-color: $main-color;
+	box-shadow: 0 5px 5px rgba($main-color, 0.2);
+	outline: 2px solid $white;
+	color: $white;
+	text-transform: uppercase;
+	transition: background-color .3s, box-shadow .3s, color .3s, outline .3s;
+
+	&:hover {
+		background-color: $white;
+		color: $main-color;
+		box-shadow: 0 0 30px rgba($main-color, 0.5);
+		outline: 2px solid $main-color;
+	}
+}

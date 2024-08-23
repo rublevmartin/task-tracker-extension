@@ -1,0 +1,15 @@
+/* ------------------------------------------------------------ *\
+	Header
+\* ------------------------------------------------------------ */
+
+.header {
+	background-image: linear-gradient(0deg, $light-grey, $white, $light-grey);
+	padding: 50px 0;
+	margin-bottom: 50px;
+	text-align: center;
+	box-shadow: 0 50px 50px -60px rgba($main-color, 0.2);
+
+	&__title {
+		letter-spacing: 0.1em;
+	}
+}

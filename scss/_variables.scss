@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------ *\
+	Variables
+\* ------------------------------------------------------------ */
+
+$font-primary: 'Bahnschrift', sans-serif;
+
+$font-size-base: 20px;
+$line-height-base: 1.78;
+
+$shell-max-width: 680px;
+$shell-gutter: 20px;
+
+$responsive-xxs: 374px;
+$responsive-xs: 767px;
+$responsive-sm: 1023px;
+$responsive-md: 1500px;
+
+/*  Colors  */
+$main-color: #041f35;
+$alternative-color: #f3e4a2;
+$black: #000;
+$light-grey: #eeeeee;
+$white: #fff;
+
+$mobile-small: '(max-width: #{$responsive-xxs}) ';
+$mobile: '(max-width: #{$responsive-xs}) ';
+$tablet-portrait: '(max-width: #{$responsive-sm}) ';
+$desktop: '(min-width: #{$responsive-sm + 1}) ';
