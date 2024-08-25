@@ -1,0 +1,46 @@
+/* ------------------------------------------------------------ *\
+	Panel
+\* ------------------------------------------------------------ */
+
+.panel {
+    &__head {
+        text-align: center;
+		padding-bottom: 40px;
+    }
+
+    &__body {
+        padding-top: 20px;
+    }
+
+    &__entry {
+        margin-top: 50px;
+        font-style: italic;
+        text-align: center;
+    }
+}
+
+/* ------------------------------------------------------------ *\
+	Panel Item
+\* ------------------------------------------------------------ */
+
+.panel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: $white;
+    border-radius: 10px;
+    border: 2px solid rgba($main-color, 0.1);
+
+    & + .panel-item {
+        margin-top: 20px;
+    }
+
+    &__entry {
+        font-size: 18px;
+    }
+
+    .btn + .btn {
+        margin-left: 10px;
+    }
+}

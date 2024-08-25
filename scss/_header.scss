@@ -12,4 +12,14 @@
 	&__title {
 		letter-spacing: 0.1em;
 	}
+
+	&--small {
+		padding: 12px 0 10px;
+		background-image: none;
+		background-color: $white;
+
+		.header__title {
+			font-size: 20px;
+		}
+	}
 }

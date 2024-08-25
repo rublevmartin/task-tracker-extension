@@ -1,0 +1,87 @@
+/* ------------------------------------------------------------ *\
+	Popup
+\* ------------------------------------------------------------ */
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($black, 0);
+    visibility: hidden;
+    transition: visibility .3s, background-color .3s;
+
+    &.active {
+        background-color: rgba($black, .7);
+        visibility: visible;
+
+        .popup__inner {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+
+    &__inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+
+        max-width: $shell-max-width;
+        padding: $shell-gutter * 2;
+        width: 100%;
+        padding-right: $shell-gutter;
+        padding-left: $shell-gutter;
+        margin: auto;
+
+        background-color: $light-grey;
+        border-radius: 10px;
+        transition: transform .3s;
+    }
+
+    &__close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 50px;
+        height: 50px;
+        font-size: 0;
+        background-color: $main-color;
+        border: 2px solid $white;
+        border-radius: 10px;
+        box-shadow: 0 5px 5px rgba($main-color, 0.2);
+        transition: background-color .3s, border-color .3s, box-shadow .3s;
+
+        &:hover {
+            background-color: $white;
+            border-color: $main-color;
+            box-shadow: 0 0 30px rgba($main-color, 0.5);
+
+            &::after,
+            &::before {
+                background-color: $main-color;
+            }
+        }
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            display: inline-block;
+            width: 26px;
+            height: 4px;
+            background-color: $white;
+
+            transform: translate(-50%, -50%) rotate(45deg);
+
+            transition: background-color .3s;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+}

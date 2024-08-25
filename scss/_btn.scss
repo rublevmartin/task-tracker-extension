@@ -4,9 +4,7 @@
 
 .btn {
 	text-align: center;
-	min-height: 45px;
 	border: 0;
-	max-width: 240px;
 	padding: 20px 31px;
 	border-radius: 10px;
 	font-size: 20px;
@@ -17,6 +15,18 @@
 	color: $white;
 	text-transform: uppercase;
 	transition: background-color .3s, box-shadow .3s, color .3s, outline .3s;
+
+	&--panel {
+		display: block;
+		width: 100%;
+	}
+
+	&--small {
+		padding: 8px 12px 6px;
+		letter-spacing: 0;
+		font-size: 16px;
+		border-radius: 5px;
+	}
 
 	&:hover {
 		background-color: $white;
