@@ -60,7 +60,7 @@ const loadTasks = ((items) => {
     if (itemsLength > 0) {
         parentTarget.innerHTML = '';
 
-        for (i = 0; i < itemsLength; i++) {
+        for (i = itemsLength - 1; i >= 0; i--) {
             markup = 
                 '<div class="panel-item">' +
                     '<div class="panel-item__head">' +
@@ -68,7 +68,7 @@ const loadTasks = ((items) => {
                             items[i].name +
                         '</h3>' +
                     
-                        '<div class="panel-item__actions">' +
+                        '<div class="panel-item__buttons">' +
                             '<button class="btn btn--small js-edit-button" data-task-number="' + i + '">Edit</button>' +
                             '<button class="btn btn--small js-delete-button" data-task-number="' + i + '">Delete</button>' +
                         '</div>' +
@@ -88,11 +88,17 @@ const loadTasks = ((items) => {
 const addNewTask = ((event) => {
     event.preventDefault();
 
-    tasks.unshift ({
+    tasks.push ({
         name: newTitle.value,
         description: newDescription.value,
         time: newEstimate.value,
+        timeRemaining: newEstimate.value,
         finished: false,
+        started: false,
+        subtasks: [
+            {name: 'option 1', finished: false},
+            {name: 'option 2', finished: false}
+        ]
     });
 
     chrome.storage.local.set({ tasks: tasks });

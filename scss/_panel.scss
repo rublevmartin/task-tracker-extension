@@ -9,7 +9,7 @@
     }
 
     &__body {
-        padding: 20px 0 40px;
+        padding: 20px 0;
     }
 
     &__entry {
@@ -24,18 +24,34 @@
 \* ------------------------------------------------------------ */
 
 .panel-item {
-    padding: 12px;
     background-color: $white;
     border-radius: 10px;
     border: 2px solid rgba($main-color, 0.1);
-    font-size: 12px;
+    transition: background-color .3s;
 
     &--small {
-        padding: 17px;
+        .panel-item__head {
+            padding: 17px;
+            font-size: 12px;
+        }
 
         .panel-item__entry {
             width: 50%;
             font-size: 14px;
+        }
+    }
+
+    &.started {
+        background-color: $alternative-color;
+    }
+
+    &.finished {
+        background-color: $success;
+    }
+
+    &.active {
+        .panel-item__body {
+            display: block;
         }
     }
 
@@ -51,6 +67,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 14px;
     }
 
     &__entry {
@@ -79,5 +96,21 @@
             border-radius: 6px;
             background-color: $main-color;
         }
+    }
+
+    &__body {
+        display: none;
+        padding: 0 17px 17px;
+        font-size: 16px;
+    }
+
+    &__foot {
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    &__actions {
+        padding-top: 17px;
+        text-align: center;
     }
 }

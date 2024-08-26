@@ -28,6 +28,12 @@
 // Check Box
 
 .checkbox {
+	text-align: left;
+
+	& + .checkbox {
+		margin-top: 10px;
+	}
+
 	&__label {
 		position: relative;
 		display: inline-block;
