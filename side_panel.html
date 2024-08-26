@@ -9,9 +9,31 @@
 </head>
 <body>
     <header class="header header--small">
-        <h1 class="header__title">
-            Side Panel
-        </h1>
+        <div class="shell">
+            <h1 class="header__title">
+                Task Tracker
+            </h1>
+        </div>
     </header>
+
+    <main>
+        <div class="shell">
+            <div class="panel">
+                <div class="panel__body" id="js-task-list">
+                    <p class="panel__entry">
+                        No added tasks yet!
+                    </p>
+                </div>
+
+                <div class="panel__actions">
+                    <button type="button" class="btn btn--panel" id="js-settings">
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="side_panel.js"></script>
 </body>
 </html>

@@ -63,13 +63,17 @@ const loadTasks = ((items) => {
         for (i = 0; i < itemsLength; i++) {
             markup = 
                 '<div class="panel-item">' +
-                '<h3 class="panel-item__entry">' +
-                items[i].name +
-                '</h3>' +
-                '<div class="panel-item__actions">' +
-                '<button class="btn btn--small js-edit-button" data-task-number="' + i + '">Edit</button>' +
-                '<button class="btn btn--small js-delete-button" data-task-number="' + i + '">Delete</button>'
-                '</div>'
+                    '<div class="panel-item__head">' +
+                        '<h3 class="panel-item__entry">' +
+                            items[i].name +
+                        '</h3>' +
+                    
+                        '<div class="panel-item__actions">' +
+                            '<button class="btn btn--small js-edit-button" data-task-number="' + i + '">Edit</button>' +
+                            '<button class="btn btn--small js-delete-button" data-task-number="' + i + '">Delete</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' 
             
             parentTarget.innerHTML += markup;
         }

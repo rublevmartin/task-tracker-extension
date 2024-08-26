@@ -9,7 +9,7 @@
     }
 
     &__body {
-        padding-top: 20px;
+        padding: 20px 0 40px;
     }
 
     &__entry {
@@ -24,23 +24,60 @@
 \* ------------------------------------------------------------ */
 
 .panel-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 12px;
     background-color: $white;
     border-radius: 10px;
     border: 2px solid rgba($main-color, 0.1);
+    font-size: 12px;
+
+    &--small {
+        padding: 17px;
+
+        .panel-item__entry {
+            width: 50%;
+            font-size: 14px;
+        }
+    }
+
+    .btn + .btn {
+        margin-left: 10px;
+    }
 
     & + .panel-item {
         margin-top: 20px;
+    }
+
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     &__entry {
         font-size: 18px;
     }
 
-    .btn + .btn {
-        margin-left: 10px;
+    &__duration {
+        width: calc(50% - 70px);
+        text-align: right;
+    }
+
+    &__progressbar {
+        position: relative;
+        width: 70px;
+        height: 15px;
+        background-color: $light-grey;
+        border-radius: 8px;
+
+        span {
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            display: inline-block;
+            height: 11px;
+            width: 0;
+            border-radius: 6px;
+            background-color: $main-color;
+        }
     }
 }
