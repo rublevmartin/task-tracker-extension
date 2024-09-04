@@ -45,8 +45,20 @@
         background-color: $alternative-color;
     }
 
+    &.overdue {
+        background-color: $error;
+    }
+
     &.finished {
         background-color: $success;
+
+        .panel-item__actions {
+            display: none;
+        }
+
+        .panel-item__entry {
+            text-decoration: line-through;
+        }
     }
 
     &.active {

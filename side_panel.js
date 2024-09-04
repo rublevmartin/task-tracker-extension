@@ -35,7 +35,6 @@ const loadTasks = ((items) => {
 
             const timeRemainingTemp = Math.ceil(items[i].timeRemaining);
 
-            //checkboxMarkup(i)
             let checkboxMarkup = '';
             let subtasksFinished = 0;
             const subtasks = items[i].subtasks; 
@@ -66,7 +65,7 @@ const loadTasks = ((items) => {
             }
 
             const markup = 
-                '<div class="panel-item panel-item--small ' + panelStarted + ' ' + finished + '">' +
+                '<div class="panel-item panel-item--small ' + panelStarted + ' ' + finished + '" id="taskNumber_' + i + '">' +
                     '<a href="#" class="panel-item__head">' +
                         '<h3 class="panel-item__entry">' +
                             items[i].name +
@@ -135,24 +134,29 @@ const settingButtonInit = () => {
     });
 }
 
+const checkStarted = (element) => {
+    const parentElement = element.closest('.panel-item');
+    const taskNumber = element.dataset.taskNumber;
+    
+    let taskStarted = tasks[taskNumber].started;
+
+    if (taskStarted) {
+        parentElement.classList.remove('started');
+        element.innerHTML = 'Start';
+    } else {
+        parentElement.classList.add('started');
+        element.innerHTML = 'Pause';
+    }
+
+    tasks[taskNumber].started = !taskStarted;
+}
+
 const initStarPauseButtons = () => {
     const startStopButtons = document.querySelectorAll('.js-toggle-task');
 
     startStopButtons.forEach((element) => {
         element.addEventListener('click', () => {
-            const parentElement = element.closest('.panel-item');
-            const taskNumber = element.dataset.taskNumber;
-            let taskStarted = tasks[taskNumber].started;
-
-            if (taskStarted) {
-                parentElement.classList.remove('started');
-                element.innerHTML = 'Start';
-            } else {
-                parentElement.classList.add('started');
-                element.innerHTML = 'Pause';
-            }
-
-            tasks[taskNumber].started = !taskStarted;
+            checkStarted(element);
 
             chrome.storage.local.set({ tasks: tasks });
         });
@@ -169,6 +173,27 @@ const initCheckboxes = () => {
         element.addEventListener('change', () => {
             tasks[taskNumber].subtasks[subTaskNumber].finished = element.checked;
 
+            let hasFinished = 0;
+            const subtasksLength = tasks[taskNumber].subtasks.length;
+
+            for (i = 0; i < subtasksLength; i++) {
+                if (tasks[taskNumber].subtasks[i].finished) {
+                    hasFinished ++;
+                }
+            }
+
+            const parentElement = element.closest('.panel-item');
+
+            if (hasFinished == subtasksLength) {
+                parentElement.classList.add('finished');
+            } else {
+                parentElement.classList.remove('finished');
+            }
+
+            const subtasksFinishedPart = hasFinished/subtasksLength*100;
+
+            parentElement.querySelector('.panel-item__progressbar').innerHTML = '<span style="width: ' + subtasksFinishedPart + '%"></span>'
+
             chrome.storage.local.set({ tasks: tasks });
         });
     });
@@ -180,10 +205,14 @@ const taskClock = setInterval(() => {
 
     if (itemsLength > 0) {
         for (i = itemsLength - 1; i >= 0; i--) {
-            if (tasks[i].started == true) {
+            if (tasks[i].started == true && !tasks[i].finished) {
                 tasks[i].timeRemaining -= 0.01;
 
                 hasStarted = true;
+            }
+
+            if (tasks[i].timeRemaining < 0) {
+                document.getElementById('taskNumber_' + i).classList.add('overdue');
             }
         }
     }

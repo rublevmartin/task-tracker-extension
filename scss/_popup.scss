@@ -28,6 +28,8 @@
         transform: translate(-50%, -50%) scale(0);
 
         max-width: $shell-max-width;
+        max-height: calc(100vh - 100px);
+        overflow:auto;
         padding: $shell-gutter * 2;
         width: 100%;
         padding-right: $shell-gutter;
